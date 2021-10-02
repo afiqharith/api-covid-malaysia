@@ -8,7 +8,11 @@ class MOH_RESTAPI:
         app = Flask(__name__)
         app.config["SECRET_KEY"] = "MYAPI123"
 
+        from .views import views
+        app.register_blueprint(views, url_prefix="/")
+
         from .api import api
-        app.register_blueprint(api, url_prefix="/")
+        app.register_blueprint(api, url_prefix="/epidemic")
+
 
         return app
