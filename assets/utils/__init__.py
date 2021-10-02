@@ -150,7 +150,7 @@ class DataHandler:
                     f"{df_hospital.columns[4]}": int(df_hospital.iloc[row, 4]),
                     f"{df_hospital.columns[5]}" : int(df_hospital.iloc[row, 5]),
                     f"{df_hospital.columns[6]}" : int(df_hospital.iloc[row, 6]),
-                    f"{df_hospital.columns[7]}" : int(df_cases_state.iloc[row, 7]),
+                    f"{df_hospital.columns[7]}" : int(df_hospital.iloc[row, 7]),
                     f"{df_hospital.columns[8]}" : int(df_hospital.iloc[row, 8]),
                     f"{df_hospital.columns[9]}" : int(df_hospital.iloc[row, 9]),
                     f"{df_hospital.columns[10]}" : int(df_hospital.iloc[row, 10]),
