@@ -1,4 +1,4 @@
-# Malaysia Covid-19 REST API
+# Malaysia Covid-19 API
 
 ### 1. Install dependencies
 
@@ -47,4 +47,4 @@ https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_d
 
 ### 4. Heroku-App
 
-[![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_REST_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
+[![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
