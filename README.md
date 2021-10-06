@@ -20,6 +20,25 @@ $ python3 wsgi.py
 | :----: | :-------------: | :----------------------------: | :-------------------------: |
 |  json  | index, epidemic | cases, deaths, tests, hospital | start_date, end_date, state |
 
+State available values:
+
+- Johor
+- Kedah
+- Kelantan
+- Melaka
+- Negeri Sembilan
+- Pahang
+- Perak
+- Perlis
+- Pulau Pinang
+- Sabah
+- Sarawak
+- Selangor
+- Terengganu
+- W.P. Kuala Lumpur
+- W.P. Labuan
+- W.P. Putrajaya
+
 Usage:
 
 ```sh
