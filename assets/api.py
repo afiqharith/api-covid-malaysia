@@ -68,12 +68,12 @@ def tests():
 
 @api.route("/hospital", methods=["GET"])
 def hospital():
-    if request.method == "GET":        
+    if request.method == "GET":
         client_state = request.args.get("state", default=None, type=str)
         client_start_date = request.args.get("start_date", default=None, type=str)
         client_end_date = request.args.get("end_date", default=None, type=str)
 
-        if client_state != None and client_start_date != None:
+        if client_state != None:
             results = helper.get_hospital(client_start_date, client_end_date, client_state)
         else:
             return jsonify({"status": "failed", "message": "unsupported query"})
