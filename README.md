@@ -18,7 +18,13 @@ $ python3 wsgi.py
 
 | Format |      Path       |             Fields             |            Query            |
 | :----: | :-------------: | :----------------------------: | :-------------------------: |
-|  json  | index, epidemic | cases, detahs, tests, hospital | start_date, end_date, state |
+|  json  | index, epidemic | cases, deaths, tests, hospital | start_date, end_date, state |
+
+Usage:
+
+```sh
+https://api-covid19-malaysia.herokuapp.com/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
+```
 
 ### 4. Heroku-App
 
