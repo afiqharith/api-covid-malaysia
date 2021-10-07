@@ -1,0 +1,14 @@
+#abutt:link,
+#abutt:visited {
+	background-color: #000288;
+	color: white;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+#abutt:hover,
+#abutt:active {
+	background-color: rgb(0, 255, 136);
+}
