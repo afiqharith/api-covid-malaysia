@@ -16,7 +16,7 @@ def cases():
         client_start_date = request.args.get("start_date", default=None, type=str)
         client_end_date = request.args.get("end_date", default=None, type=str)
 
-        if client_state == None:
+        if client_state == None or client_state == "":
             results = helper.get_cases_malaysia(client_start_date, client_end_date)
         elif client_state != None:
             results = helper.get_state_cases(client_start_date, client_end_date, client_state)
@@ -35,7 +35,7 @@ def deaths():
         client_start_date = request.args.get("start_date", default=None, type=str)
         client_end_date = request.args.get("end_date", default=None, type=str)
 
-        if client_state == None:
+        if client_state == None or client_state == "":
             results = helper.get_deaths_malaysia(client_start_date, client_end_date)
         elif client_state != None:
             results = helper.get_deaths_state(client_start_date, client_end_date, client_state)
@@ -54,7 +54,7 @@ def tests():
         client_start_date = request.args.get("start_date", default=None, type=str)
         client_end_date = request.args.get("end_date", default=None, type=str)
 
-        if client_state == None:
+        if client_state == None or client_state == "":
             results = helper.get_tests_malaysia(client_start_date, client_end_date)
         elif client_state != None:
             results = helper.get_tests_state(client_start_date, client_end_date, client_state)
