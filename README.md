@@ -47,11 +47,10 @@ https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_d
 
 Vaccine usage example:
 
-````sh
+```sh
 https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
 ```
 
 ### 4. Heroku-App
 
 [![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
-````
