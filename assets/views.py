@@ -1,4 +1,3 @@
-from .utils import DataHandler as helper
 from flask import render_template
 from flask import Blueprint
 from flask import redirect

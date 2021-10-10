@@ -16,9 +16,9 @@ $ python3 wsgi.py
 
 ### 3. Query
 
-| Format |      Path       |             Fields             |            Query            |
-| :----: | :-------------: | :----------------------------: | :-------------------------: |
-|  json  | index, epidemic | cases, deaths, tests, hospital | start_date, end_date, state |
+| Format |           Path           |        Fields Epidemic         | Field Vaccine |            Query            |
+| :----: | :----------------------: | :----------------------------: | :-----------: | :-------------------------: |
+|  json  | index, epidemic, vaccine | cases, deaths, tests, hospital |     None      | start_date, end_date, state |
 
 State available values:
 
@@ -39,12 +39,19 @@ State available values:
 - W.P. Labuan
 - W.P. Putrajaya
 
-Usage:
+Epidemic usage example:
 
 ```sh
 https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
 ```
 
+Vaccine usage example:
+
+````sh
+https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
+```
+
 ### 4. Heroku-App
 
 [![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
+````

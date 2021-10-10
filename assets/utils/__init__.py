@@ -29,8 +29,14 @@ df_tests_state = pd.read_csv(tests_state_url).fillna(0)
 hospital_general_url = config["COVID_HOSPITAL_URL"]["GENERAL"]
 df_hospital = pd.read_csv(hospital_general_url).fillna(0)
 
+vaccine_state_url = config["VACCINE_URL"]["STATE"]
+df_vaccine_state = pd.read_csv(vaccine_state_url).fillna(0)
 
-class DataHandler:
+vaccine_malaysia_url = config["VACCINE_URL"]["MALAYSIA"]
+df_vaccine_malaysia = pd.read_csv(vaccine_malaysia_url).fillna(0)
+
+
+class DataHandlerEpidemic:
     def __init__(self) -> None:
         pass
         
@@ -115,7 +121,7 @@ class DataHandler:
         else:
             return None
 
-    def get_state_cases(client_query_start_date, client_query_end_date, client_query_state) -> dict:
+    def get_cases_state(client_query_start_date, client_query_end_date, client_query_state) -> dict:
         response_results = list()
         for row in range(len(df_cases_state.index)):
             if client_query_start_date == df_cases_state.iloc[row, 0] and client_query_end_date == None and client_query_state.lower() == df_cases_state.iloc[row, 1].lower():
@@ -410,6 +416,155 @@ class DataHandler:
                         f"{df_hospital.columns[11]}" : int(df_hospital.iloc[row, 11]),
                         f"{df_hospital.columns[12]}" : int(df_hospital.iloc[row, 12]),
                         f"{df_hospital.columns[13]}" : int(df_hospital.iloc[row, 13])
+                    })
+
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
+
+class DataHandlerVaccination:
+    def __init__(self) -> None:
+            pass
+        
+    def get_vaccine_malaysia(client_query_start_date, client_query_end_date) -> dict:
+
+        response_results = list()
+        for row in range(len(df_vaccine_malaysia .index)):
+            if client_query_start_date == df_vaccine_malaysia.iloc[row, 0] and client_query_end_date == None:
+                response_results.append({
+                    f"{df_vaccine_malaysia.columns[0]}": str(df_vaccine_malaysia.iloc[row, 0]),
+                    f"{df_vaccine_malaysia.columns[1]}": int(df_vaccine_malaysia.iloc[row, 1]),
+                    f"{df_vaccine_malaysia.columns[2]}": int(df_vaccine_malaysia.iloc[row, 2]),
+                    f"{df_vaccine_malaysia.columns[3]}": int(df_vaccine_malaysia.iloc[row, 3]),
+                    f"{df_vaccine_malaysia.columns[4]}" : int(df_vaccine_malaysia.iloc[row, 4]),
+                    f"{df_vaccine_malaysia.columns[5]}" : int(df_vaccine_malaysia.iloc[row, 5]),
+                    f"{df_vaccine_malaysia.columns[6]}" : int(df_vaccine_malaysia.iloc[row, 6]),
+                    f"{df_vaccine_malaysia.columns[7]}" : int(df_vaccine_malaysia.iloc[row, 7]),
+                    f"{df_vaccine_malaysia.columns[8]}" : int(df_vaccine_malaysia.iloc[row, 8]),
+                    f"{df_vaccine_malaysia.columns[9]}" : int(df_vaccine_malaysia.iloc[row, 9]),
+                    f"{df_vaccine_malaysia.columns[10]}" : int(df_vaccine_malaysia.iloc[row, 10]),
+                    f"{df_vaccine_malaysia.columns[11]}" : int(df_vaccine_malaysia.iloc[row, 11]),
+                    f"{df_vaccine_malaysia.columns[12]}": int(df_vaccine_malaysia.iloc[row, 12]),
+                    f"{df_vaccine_malaysia.columns[13]}": int(df_vaccine_malaysia.iloc[row, 13]),
+                    f"{df_vaccine_malaysia.columns[14]}": int(df_vaccine_malaysia.iloc[row, 14]),
+                    f"{df_vaccine_malaysia.columns[15]}": int(df_vaccine_malaysia.iloc[row, 15]),
+                    f"{df_vaccine_malaysia.columns[16]}": int(df_vaccine_malaysia.iloc[row, 16]),
+                    f"{df_vaccine_malaysia.columns[17]}": int(df_vaccine_malaysia.iloc[row, 17]),
+                    f"{df_vaccine_malaysia.columns[18]}": int(df_vaccine_malaysia.iloc[row, 18])
+                })
+                break
+            elif client_query_start_date == None and client_query_end_date == None:
+                    response_results.append({
+                        f"{df_vaccine_malaysia.columns[0]}": str(df_vaccine_malaysia.iloc[row, 0]),
+                        f"{df_vaccine_malaysia.columns[1]}": int(df_vaccine_malaysia.iloc[row, 1]),
+                        f"{df_vaccine_malaysia.columns[2]}": int(df_vaccine_malaysia.iloc[row, 2]),
+                        f"{df_vaccine_malaysia.columns[3]}": int(df_vaccine_malaysia.iloc[row, 3]),
+                        f"{df_vaccine_malaysia.columns[4]}" : int(df_vaccine_malaysia.iloc[row, 4]),
+                        f"{df_vaccine_malaysia.columns[5]}" : int(df_vaccine_malaysia.iloc[row, 5]),
+                        f"{df_vaccine_malaysia.columns[6]}" : int(df_vaccine_malaysia.iloc[row, 6]),
+                        f"{df_vaccine_malaysia.columns[7]}" : int(df_vaccine_malaysia.iloc[row, 7]),
+                        f"{df_vaccine_malaysia.columns[8]}" : int(df_vaccine_malaysia.iloc[row, 8]),
+                        f"{df_vaccine_malaysia.columns[9]}" : int(df_vaccine_malaysia.iloc[row, 9]),
+                        f"{df_vaccine_malaysia.columns[10]}" : int(df_vaccine_malaysia.iloc[row, 10]),
+                        f"{df_vaccine_malaysia.columns[11]}" : int(df_vaccine_malaysia.iloc[row, 11]),
+                        f"{df_vaccine_malaysia.columns[12]}": int(df_vaccine_malaysia.iloc[row, 12]),
+                        f"{df_vaccine_malaysia.columns[13]}": int(df_vaccine_malaysia.iloc[row, 13]),
+                        f"{df_vaccine_malaysia.columns[14]}": int(df_vaccine_malaysia.iloc[row, 14]),
+                        f"{df_vaccine_malaysia.columns[15]}": int(df_vaccine_malaysia.iloc[row, 15]),
+                        f"{df_vaccine_malaysia.columns[16]}": int(df_vaccine_malaysia.iloc[row, 16]),
+                        f"{df_vaccine_malaysia.columns[17]}": int(df_vaccine_malaysia.iloc[row, 17]),
+                        f"{df_vaccine_malaysia.columns[18]}": int(df_vaccine_malaysia.iloc[row, 18])
+                })
+
+            elif client_query_start_date != None and client_query_end_date != None:
+                client_query_start_date_conversion = datetime.datetime.strptime(client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(client_query_end_date, "%Y-%m-%d")
+
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccine_malaysia.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    response_results.append({
+                        f"{df_vaccine_malaysia.columns[0]}": str(df_vaccine_malaysia.iloc[row, 0]),
+                        f"{df_vaccine_malaysia.columns[1]}": int(df_vaccine_malaysia.iloc[row, 1]),
+                        f"{df_vaccine_malaysia.columns[2]}": int(df_vaccine_malaysia.iloc[row, 2]),
+                        f"{df_vaccine_malaysia.columns[3]}": int(df_vaccine_malaysia.iloc[row, 3]),
+                        f"{df_vaccine_malaysia.columns[4]}" : int(df_vaccine_malaysia.iloc[row, 4]),
+                        f"{df_vaccine_malaysia.columns[5]}" : int(df_vaccine_malaysia.iloc[row, 5]),
+                        f"{df_vaccine_malaysia.columns[6]}" : int(df_vaccine_malaysia.iloc[row, 6]),
+                        f"{df_vaccine_malaysia.columns[7]}" : int(df_vaccine_malaysia.iloc[row, 7]),
+                        f"{df_vaccine_malaysia.columns[8]}" : int(df_vaccine_malaysia.iloc[row, 8]),
+                        f"{df_vaccine_malaysia.columns[9]}" : int(df_vaccine_malaysia.iloc[row, 9]),
+                        f"{df_vaccine_malaysia.columns[10]}" : int(df_vaccine_malaysia.iloc[row, 10]),
+                        f"{df_vaccine_malaysia.columns[11]}" : int(df_vaccine_malaysia.iloc[row, 11]),
+                        f"{df_vaccine_malaysia.columns[12]}": int(df_vaccine_malaysia.iloc[row, 12]),
+                        f"{df_vaccine_malaysia.columns[13]}": int(df_vaccine_malaysia.iloc[row, 13]),
+                        f"{df_vaccine_malaysia.columns[14]}": int(df_vaccine_malaysia.iloc[row, 14]),
+                        f"{df_vaccine_malaysia.columns[15]}": int(df_vaccine_malaysia.iloc[row, 15]),
+                        f"{df_vaccine_malaysia.columns[16]}": int(df_vaccine_malaysia.iloc[row, 16]),
+                        f"{df_vaccine_malaysia.columns[17]}": int(df_vaccine_malaysia.iloc[row, 17]),
+                        f"{df_vaccine_malaysia.columns[18]}": int(df_cases_malaysia.iloc[row, 18])
+                    })
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
+    def get_vaccine_state(client_query_start_date, client_query_end_date, client_query_state) -> dict:
+        response_results = list()
+        for row in range(len(df_vaccine_state.index)):
+            if client_query_start_date == df_vaccine_state.iloc[row, 0] and client_query_end_date == None and client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+                response_results.append({
+                    f"{df_vaccine_state.columns[0]}": str(df_vaccine_state.iloc[row, 0]),
+                    f"{df_vaccine_state.columns[1]}": str(df_vaccine_state.iloc[row, 1]),
+                    f"{df_vaccine_state.columns[2]}": int(df_vaccine_state.iloc[row, 2]),
+                    f"{df_vaccine_state.columns[3]}": int(df_vaccine_state.iloc[row, 3]),
+                    f"{df_vaccine_state.columns[4]}": int(df_vaccine_state.iloc[row, 4]),
+                    f"{df_vaccine_state.columns[5]}" : int(df_vaccine_state.iloc[row, 5]),
+                    f"{df_vaccine_state.columns[6]}" : int(df_vaccine_state.iloc[row, 6]),
+                    f"{df_vaccine_state.columns[7]}" : int(df_vaccine_state.iloc[row, 7]),
+                    f"{df_vaccine_state.columns[8]}" : int(df_vaccine_state.iloc[row, 8]),
+                    f"{df_vaccine_state.columns[9]}" : int(df_vaccine_state.iloc[row, 9]),
+                    f"{df_vaccine_state.columns[10]}" : int(df_vaccine_state.iloc[row, 10]),
+                    f"{df_vaccine_state.columns[11]}" : int(df_vaccine_state.iloc[row, 11]),
+                    f"{df_vaccine_state.columns[12]}" : int(df_vaccine_state.iloc[row, 12])
+                })
+                break
+
+            elif client_query_start_date == None and client_query_end_date == None and client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+                response_results.append({
+                    f"{df_vaccine_state.columns[0]}": str(df_vaccine_state.iloc[row, 0]),
+                    f"{df_vaccine_state.columns[1]}": str(df_vaccine_state.iloc[row, 1]),
+                    f"{df_vaccine_state.columns[2]}": int(df_vaccine_state.iloc[row, 2]),
+                    f"{df_vaccine_state.columns[3]}": int(df_vaccine_state.iloc[row, 3]),
+                    f"{df_vaccine_state.columns[4]}": int(df_vaccine_state.iloc[row, 4]),
+                    f"{df_vaccine_state.columns[5]}" : int(df_vaccine_state.iloc[row, 5]),
+                    f"{df_vaccine_state.columns[6]}" : int(df_vaccine_state.iloc[row, 6]),
+                    f"{df_vaccine_state.columns[7]}" : int(df_vaccine_state.iloc[row, 7]),
+                    f"{df_vaccine_state.columns[8]}" : int(df_vaccine_state.iloc[row, 8]),
+                    f"{df_vaccine_state.columns[9]}" : int(df_vaccine_state.iloc[row, 9]),
+                    f"{df_vaccine_state.columns[10]}" : int(df_vaccine_state.iloc[row, 10]),
+                    f"{df_vaccine_state.columns[11]}" : int(df_vaccine_state.iloc[row, 11]),
+                    f"{df_vaccine_state.columns[12]}" : int(df_vaccine_state.iloc[row, 12])
+                })
+
+            elif client_query_start_date != None and client_query_end_date != None and client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+                client_query_start_date_conversion = datetime.datetime.strptime(client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(client_query_end_date, "%Y-%m-%d")
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccine_state.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    response_results.append({
+                        f"{df_vaccine_state.columns[0]}": str(df_vaccine_state.iloc[row, 0]),
+                        f"{df_vaccine_state.columns[1]}": str(df_vaccine_state.iloc[row, 1]),
+                        f"{df_vaccine_state.columns[2]}": int(df_vaccine_state.iloc[row, 2]),
+                        f"{df_vaccine_state.columns[3]}": int(df_vaccine_state.iloc[row, 3]),
+                        f"{df_vaccine_state.columns[4]}": int(df_vaccine_state.iloc[row, 4]),
+                        f"{df_vaccine_state.columns[5]}" : int(df_vaccine_state.iloc[row, 5]),
+                        f"{df_vaccine_state.columns[6]}" : int(df_vaccine_state.iloc[row, 6]),
+                        f"{df_vaccine_state.columns[7]}" : int(df_vaccine_state.iloc[row, 7]),
+                        f"{df_vaccine_state.columns[8]}" : int(df_vaccine_state.iloc[row, 8]),
+                        f"{df_vaccine_state.columns[9]}" : int(df_vaccine_state.iloc[row, 9]),
+                        f"{df_vaccine_state.columns[10]}" : int(df_vaccine_state.iloc[row, 10]),
+                        f"{df_vaccine_state.columns[11]}" : int(df_vaccine_state.iloc[row, 11]),
+                        f"{df_vaccine_state.columns[12]}" : int(df_vaccine_state.iloc[row, 12])
                     })
 
         if len(response_results) > 0:

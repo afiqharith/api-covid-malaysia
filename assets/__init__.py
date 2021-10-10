@@ -11,8 +11,11 @@ class MOH_RESTAPI:
         from .views import views
         app.register_blueprint(views, url_prefix="/")
 
-        from .api import api
-        app.register_blueprint(api, url_prefix="/epidemic")
+        from .api_epidemic import api_epidemic
+        app.register_blueprint(api_epidemic, url_prefix="/epidemic")
+
+        from .api_vaccination import api_vaccination
+        app.register_blueprint(api_vaccination, url_prefix="/vaccine")
 
 
         return app

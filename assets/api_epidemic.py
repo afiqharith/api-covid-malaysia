@@ -1,4 +1,4 @@
-from .utils import DataHandler as helper
+from .utils import DataHandlerEpidemic as helper
 from flask import render_template
 from flask import Blueprint
 from flask import redirect
@@ -7,9 +7,9 @@ from flask import url_for
 from flask import jsonify
 
 
-api = Blueprint("api", __name__)
+api_epidemic = Blueprint("api_epidemic", __name__)
 
-@api.route("/cases", methods=["GET"])
+@api_epidemic.route("/cases", methods=["GET"])
 def cases():
     if request.method == "GET":
         client_state = request.args.get("state", default=None, type=str)
@@ -19,16 +19,16 @@ def cases():
         if client_state == None or client_state == "":
             results = helper.get_cases_malaysia(client_start_date, client_end_date)
         elif client_state != None:
-            results = helper.get_state_cases(client_start_date, client_end_date, client_state)
+            results = helper.get_cases_state(client_start_date, client_end_date, client_state)
         else:
             return jsonify({"status": "failed", "message": "unsupported query"})
         
         if results != None:
-            return jsonify({"status": "success", "cases": results})
+            return jsonify({"status": "success", "data": results})
         else:
-            return jsonify({"status": "failed", "cases": results})
+            return jsonify({"status": "failed", "data": results})
 
-@api.route("/deaths", methods=["GET"])
+@api_epidemic.route("/deaths", methods=["GET"])
 def deaths():
     if request.method == "GET":
         client_state = request.args.get("state", default=None, type=str)
@@ -43,11 +43,11 @@ def deaths():
             return jsonify({"status": "failed", "message": "unsupported query"})
         
         if results != None:
-            return jsonify({"status": "success", "death_cases": results})
+            return jsonify({"status": "success", "data": results})
         else:
-            return jsonify({"status": "failed", "death_cases": results})
+            return jsonify({"status": "failed", "data": results})
 
-@api.route("/tests", methods=["GET"])
+@api_epidemic.route("/tests", methods=["GET"])
 def tests():
     if request.method == "GET":
         client_state = request.args.get("state", default=None, type=str)
@@ -62,11 +62,11 @@ def tests():
             return jsonify({"status": "failed", "message": "unsupported query"})
         
         if results != None:
-            return jsonify({"status": "success", "tests": results})
+            return jsonify({"status": "success", "data": results})
         else:
-            return jsonify({"status": "failed", "tests": results})
+            return jsonify({"status": "failed", "data": results})
 
-@api.route("/hospital", methods=["GET"])
+@api_epidemic.route("/hospital", methods=["GET"])
 def hospital():
     if request.method == "GET":
         client_state = request.args.get("state", default=None, type=str)
@@ -79,6 +79,6 @@ def hospital():
             return jsonify({"status": "failed", "message": "unsupported query"})
         
         if results != None:
-            return jsonify({"status": "success", "hospital": results})
+            return jsonify({"status": "success", "data": results})
         else:
-            return jsonify({"status": "failed",  "hospital": results})
+            return jsonify({"status": "failed",  "data": results})
