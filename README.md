@@ -48,7 +48,7 @@ https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_d
 Vaccine usage example:
 
 ```sh
-https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
+https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
 ```
 
 ### 4. Heroku-App
