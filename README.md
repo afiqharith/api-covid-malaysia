@@ -60,13 +60,13 @@ https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=202
 Epidemic usage example:
 
 ```sh
-CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", end_date=2021-07-05, "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/epidemic/cases
+CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/epidemic/cases
 ```
 
 Vaccine usage example:
 
 ```sh
-CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", end_date=2021-07-05, "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccine
+CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccine
 ```
 
 ### 7. Heroku-App
