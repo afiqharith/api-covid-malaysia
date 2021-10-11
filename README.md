@@ -2,6 +2,8 @@
 
 ### 1. Install dependencies
 
+Run:
+
 ```sh
 $ pip3 install -r requirements.txt
 ```
@@ -39,6 +41,8 @@ State available values:
 - W.P. Labuan
 - W.P. Putrajaya
 
+### 5. Access data using GET request
+
 Epidemic usage example:
 
 ```sh
@@ -51,6 +55,20 @@ Vaccine usage example:
 https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
 ```
 
-### 4. Heroku-App
+### 6. Access data using JSON POST request
+
+Epidemic usage example:
+
+```sh
+CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", end_date=2021-07-05, "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/epidemic/cases
+```
+
+Vaccine usage example:
+
+```sh
+CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", end_date=2021-07-05, "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccine
+```
+
+### 7. Heroku-App
 
 [![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
