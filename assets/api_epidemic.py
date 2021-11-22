@@ -29,7 +29,7 @@ def cases():
             return jsonify({"status": "failed", "data": results})
 
     if request.method == "POST":
-        json_obj = json.loads(json.dumps(request.get_json()))
+        json_obj = request.get_json()
         client_state = json_obj.get("state")
         client_start_date = json_obj.get("client_start_date")
         client_end_date = json_obj.get("client_end_date")
@@ -67,7 +67,7 @@ def deaths():
             return jsonify({"status": "failed", "data": results})
 
     if request.method == "POST":
-        json_obj = json.loads(json.dumps(request.get_json()))
+        json_obj = request.get_json()
         client_state = json_obj.get("state")
         client_start_date = json_obj.get("client_start_date")
         client_end_date = json_obj.get("client_end_date")
@@ -104,7 +104,7 @@ def tests():
             return jsonify({"status": "failed", "data": results})
 
     if request.method == "POST":
-        json_obj = json.loads(json.dumps(request.get_json()))
+        json_obj = request.get_json()
         client_state = json_obj.get("state")
         client_start_date = json_obj.get("client_start_date")
         client_end_date = json_obj.get("client_end_date")
@@ -139,7 +139,7 @@ def hospital():
             return jsonify({"status": "failed",  "data": results})
     
     if request.method == "POST":
-        json_obj = json.loads(json.dumps(request.get_json()))
+        json_obj = request.get_json()
         client_state = json_obj.get("state")
         client_start_date = json_obj.get("client_start_date")
         client_end_date = json_obj.get("client_end_date")
