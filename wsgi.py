@@ -1,6 +1,10 @@
-from assets import MOH_RESTAPI as RESTAPI
+from assets import MOH_WebAPI as WebAPI
+import datetime
 
-app = RESTAPI().run_app
+app = WebAPI().run_app
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    try:
+        app.run(debug = True)
+    except KeyboardInterrupt:
+        print(f"Server shutting down on {datetime.datetime.now}")

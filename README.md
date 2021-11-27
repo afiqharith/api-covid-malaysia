@@ -1,4 +1,4 @@
-# Malaysia Covid-19 API
+# Malaysia Covid-19 Web API
 
 ### 1. Install dependencies
 
