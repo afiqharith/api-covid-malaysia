@@ -13,13 +13,13 @@ def cases():
         helper.client_query_start_date = request.args.get("start_date", default=None, type=str)
         helper.client_query_end_date = request.args.get("end_date", default=None, type=str)
 
-        if helper.client_query_state  == None or helper.client_query_state  == "":
+        if helper.client_query_state == None or helper.client_query_state == "":
             results = helper.get_cases_malaysia()
         elif helper.client_query_state  != None:
             results = helper.get_cases_state()
         else:
             return jsonify({"status": "failed", "message": "unsupported query"})
-        
+
         if results != None:
             return jsonify({"status": "success", "data": results})
         else:
