@@ -41,6 +41,12 @@ State available values:
 - W.P. Labuan
 - W.P. Putrajaya
 
+Check out:
+
+```sh
+CURL-X POST -H "Content-Type: application/json" https://api-covid19-malaysia.herokuapp.com/category
+```
+
 ### 5. Access data using GET request
 
 Epidemic usage example:
@@ -60,7 +66,7 @@ https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=202
 Epidemic usage example:
 
 ```sh
-CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/epidemic/cases
+CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases
 ```
 
 Vaccine usage example:

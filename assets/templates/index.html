@@ -9,17 +9,13 @@
     Epidemic Ref: <a href="https://github.com/MoH-Malaysia/covid19-public">MOH-Malaysia Covid-19 Public Data Github</a>.</br>
     Vaccination Ref: <a href="https://github.com/CITF-Malaysia/citf-public">CITF Malaysia Public Data Github</a>.</br>
     Source code: <a href="https://github.com/afiqharith/malaysia_covid19_api">Github Malaysia Covid-19 API</a>.</br>
-    Format: json </br>
-    Path: {index, epidemic, vaccine} </br>
-    Field epidemic: {cases, deaths, tests, hospital} </br>
-    Field vaccine: {null} </br>
-    Query: {start_date, end_date, state} </br></br>
+    Available Parameter: <a href="{{ url_for('api_category.category')}}" target="_blank">Category</a> </br></br>
     Epidemic usage example: </br>
     https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05 </br></br>
     Vaccine usage example: </br>
     https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</br>
 </p>
-    <a id="abutt" href="https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05" target="_blank">Test Epidemic</a>
-    <a id="abutt" href="https://api-covid19-malaysia.herokuapp.com/vaccine?state=Selangor&start_date=2021-06-02&end_date=2021-07-05" target="_blank">Test Vaccination</a>
+    <a id="abutt" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">Test Epidemic</a>
+    <a id="abutt" href="{{ url_for('api_vaccination.vaccine', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
 
 {% endblock %}

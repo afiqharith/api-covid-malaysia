@@ -17,5 +17,7 @@ class MOH_WebAPI:
         from .api_vaccination import api_vaccination
         app.register_blueprint(api_vaccination, url_prefix="/vaccine")
 
+        from .api_category import api_category
+        app.register_blueprint(api_category, url_prefix="/category")
 
         return app

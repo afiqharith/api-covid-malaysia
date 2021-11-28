@@ -3,7 +3,7 @@ from flask import Blueprint
 from flask import request
 from flask import jsonify
 
-api_vaccination= Blueprint("api_vaccination", __name__)
+api_vaccination = Blueprint("api_vaccination", __name__)
 
 @api_vaccination.route("", methods=["GET", "POST"])
 def vaccine():
