@@ -6,7 +6,7 @@ from flask import jsonify
 api_vaccination = Blueprint("api_vaccination", __name__)
 
 @api_vaccination.route("", methods=["GET", "POST"])
-def vaccine():
+def vaccination():
     if request.method == "GET":
         helper = DataHandlerVaccination()
         helper.client_query_state = request.args.get("state", default=None, type=str)
