@@ -18,10 +18,6 @@ $ python3 wsgi.py
 
 ### 3. Query
 
-| Format |           Path           |        Fields Epidemic         | Field Vaccine |            Query            |
-| :----: | :----------------------: | :----------------------------: | :-----------: | :-------------------------: |
-|  json  | index, epidemic, vaccine | cases, deaths, tests, hospital |     None      | start_date, end_date, state |
-
 | Category    | Fields                         | Query                         |
 | :---------- | :----------------------------- | :---------------------------- |
 | index       | None                           | None                          |
