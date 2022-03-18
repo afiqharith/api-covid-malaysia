@@ -128,6 +128,48 @@ class DataHandlerEpidemic:
         else:
             return None
 
+    def get_cases_state_all(self) -> dict:
+        df_cases_state_all = pd.read_csv(self.helper.cases_state_url).fillna(0)
+
+        response_results = list()
+        for row in range(len(df_cases_state_all.index)):
+
+            if self.client_query_start_date == df_cases_state_all.iloc[row, 0] and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(df_cases_state_all.columns)):
+                    if isinstance(df_cases_state_all.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_cases_state_all.columns[column]}"] = int(df_cases_state_all.iloc[row, column])
+                    else:
+                        sub_response[f"{df_cases_state_all.columns[column]}"] = str(df_cases_state_all.iloc[row, column])
+                response_results.append(sub_response)
+                break
+
+            elif self.client_query_start_date == None and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(df_cases_state_all.columns)):
+                    if isinstance(df_cases_state_all.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_cases_state_all.columns[column]}"] = int(df_cases_state_all.iloc[row, column])
+                    else:
+                        sub_response[f"{df_cases_state_all.columns[column]}"] = str(df_cases_state_all.iloc[row, column])
+                response_results.append(sub_response)
+
+            elif self.client_query_start_date != None and self.client_query_end_date != None:
+                client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_cases_state_all.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    sub_response = dict()
+                    for column in range(len(df_cases_state_all.columns)):
+                        if isinstance(df_cases_state_all.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_cases_state_all.columns[column]}"] = int(df_cases_state_all.iloc[row, column])
+                        else:
+                            sub_response[f"{df_cases_state_all.columns[column]}"] = str(df_cases_state_all.iloc[row, column])
+                    response_results.append(sub_response)
+
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
     def get_deaths_malaysia(self) -> dict:
         df_deaths_malaysia = pd.read_csv(self.helper.deaths_malaysia_url).fillna(0)
 
@@ -232,7 +274,7 @@ class DataHandlerEpidemic:
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_tests_malaysia.columns)):                    
+                for column in range(len(df_tests_malaysia.columns)):
                     if isinstance(df_tests_malaysia.iloc[row, column], (np.int64, np.float64)):
                         sub_response[f"{df_tests_malaysia.columns[column]}"] = int(df_tests_malaysia.iloc[row, column])
                     else:

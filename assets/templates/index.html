@@ -3,29 +3,43 @@
 {% endblock %}
 
 {% block content %}
-<h3>Malaysia Covid-19 API</h3>
-<p>
-	Web API for Malaysia Covid-19 public data from MOH. <br>
+<h1 class="h1_header">Malaysia Covid-19 API</h1>
+
+<div class="div_top">
+    <p>Web API for Malaysia Covid-19 public data from MOH.</br>
     Epidemic Ref: <a href="https://github.com/MoH-Malaysia/covid19-public">MOH-Malaysia Covid-19 Public Data Github</a>.</br>
     Vaccination Ref: <a href="https://github.com/CITF-Malaysia/citf-public">CITF Malaysia Public Data Github</a>.</br>
     Source code: <a href="https://github.com/afiqharith/malaysia_covid19_api">Github Malaysia Covid-19 API</a>.</br>
-    Available Parameter: <a href="{{ url_for('api_category.category')}}" target="_blank">Category</a>.</br></br>
-</p>
+    Available Parameter: <a href="{{ url_for('api_category.category')}}" target="_blank">Category</a>.
+    </p>
+</div>
 
-    <h4>Fetching epidemic category data example:</h4>
-    <p><b>GET Request</b></p>
-    <p><i>https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05</i></p>
+<div class="div_middle_upper">
+    <h4 class="h4_header">Epidemic category</h4>
+    <p class="p_title">GET Request</p>
+    <p class="p_request" id="get_req_epidemic">https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05</p>
+    <button class="button_copy" onclick="copy_to_clipboard('get_req_epidemic')">Copy</button>
 
-    <p><b>POST Request</b></p>
-    <p><i>CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-01-02", "end_date": "2021-01-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases</i></p></br>
+    <p class="p_title">POST Request</p>
+    <p class="p_request" id="post_req_epidemic">CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-01-02", "end_date": "2021-01-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases</p>
+    <button class="button_copy" onclick="copy_to_clipboard('post_req_epidemic')">Copy</button>
+</div>
+
+<div class="div_middle_lower">
+    <h4 class="h4_header">Vaccination category</h4>
+    <p class="p_title">GET Request<p>
+    <p class="p_request" id="get_req_vaccination">https://api-covid19-malaysia.herokuapp.com/vaccination?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
+    <button class="button_copy" onclick="copy_to_clipboard('get_req_vaccination')">Copy</button>
     
-    <h4>Fetching vaccination category data example:</h4>
-    <p><b>GET Request</b><p>
-    <p><i>https://api-covid19-malaysia.herokuapp.com/vaccination?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</i></p>
+    <p class="p_title">POST Request</p>
+    <p class="p_request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination</p>
+    <button class="button_copy" onclick="copy_to_clipboard('post_req_vaccination')">Copy</button>
+</div>
 
-    <p><b>POST Request</b></p>
-    <p><i>CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination</i><p></br>
-    <br><a id="abutt" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">Test Epidemic</a>
-    <a id="abutt" href="{{ url_for('api_vaccination.vaccination', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
+<div class="div_bottom">
+    <a class="button button_font" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">Test Epidemic</a>
+    <a class="button button_font" href="{{ url_for('api_vaccination.vaccination', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
+</div>
 
+<script type="text/javascript" src="{{ url_for('static', filename='copy_clipboard.js') }}"></script>
 {% endblock %}

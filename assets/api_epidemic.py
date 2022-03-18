@@ -17,6 +17,8 @@ def cases():
             results = helper.get_cases_malaysia()
         elif helper.client_query_state  != None:
             results = helper.get_cases_state()
+        elif helper.client_query_state  != None and helper.client_query_state.lower() == "all":
+            results = helper.get_cases_state_all()
         else:
             return jsonify({"status": "failed", "message": "unsupported query"})
 
