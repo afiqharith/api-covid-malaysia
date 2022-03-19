@@ -1,4 +1,4 @@
-from assets import MOH_WebAPI as WebAPI
+from assets import WebAPI
 import datetime
 
 app = WebAPI().run_app

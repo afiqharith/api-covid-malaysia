@@ -1,6 +1,6 @@
 from flask import Flask
 
-class MOH_WebAPI:
+class WebAPI:
     def __init__(self) -> None:
         self.run_app = self.init()
 
