@@ -81,11 +81,11 @@ body {
 	background-color: lightgray;
 	width: 80vw;
 	border-radius: 0.4vmin;
+	margin-top: 0.2vh;
 	padding-top: 0.4vmin;
 	padding-bottom: 00.4vmin;
 	padding-left: 1vmin;
 	display: inline-block;
-	margin-top: -2vh;
 }
 
 .button_copy {
