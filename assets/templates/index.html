@@ -1,4 +1,4 @@
-{% extends "base.html" %} 
+{% extends "template.html" %} 
 {% block link %}
 {% endblock %}
 
@@ -21,7 +21,7 @@
     <p class="p_title">GET Request</p>
     <p class="p_request" id="get_req_epidemic">https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05</p>
     <div class="tooltip">
-        <button class="button_copy button_font" onclick="copy_to_clipboard('get_req_epidemic', 'tooltip1')" onmouseout="mouse_hover_out('tooltip1')">Copy
+        <button class="button_copy button_font" onclick="method_copy_text('get_req_epidemic', 'tooltip1')" onmouseout="method_mouse_hover_out('tooltip1')">Copy
         <span class="tooltiptext" id="tooltip1">Copy to clipboard</span>
         </button>
     </div>
@@ -29,7 +29,7 @@
     <p class="p_title">POST Request</p>
     <p class="p_request" id="post_req_epidemic">CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-01-02", "end_date": "2021-01-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases</p>
     <div class="tooltip">
-        <button class="button_copy button_font" onclick="copy_to_clipboard('post_req_epidemic', 'tooltip2')" onmouseout="mouse_hover_out('tooltip2')">Copy
+        <button class="button_copy button_font" onclick="method_copy_text('post_req_epidemic', 'tooltip2')" onmouseout="method_mouse_hover_out('tooltip2')">Copy
         <span class="tooltiptext" id="tooltip2">Copy to clipboard</span>
         </button>
     </div>
@@ -37,10 +37,10 @@
 
 <div class="div_middle_lower">
     <h4 class="h4_header">Vaccination category</h4>
-    <p class="p_title">GET Request<p>
+    <p class="p_title">GET Request</p>
     <p class="p_request" id="get_req_vaccination">https://api-covid19-malaysia.herokuapp.com/vaccination?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
     <div class="tooltip">
-        <button class="button_copy button_font" onclick="copy_to_clipboard('get_req_vaccination', 'tooltip3')" onmouseout="mouse_hover_out('tooltip3')">Copy
+        <button class="button_copy button_font" onclick="method_copy_text('get_req_vaccination', 'tooltip3')" onmouseout="method_mouse_hover_out('tooltip3')">Copy
         <span class="tooltiptext" id="tooltip3">Copy to clipboard</span>
         </button>
     </div>
@@ -48,7 +48,7 @@
     <p class="p_title">POST Request</p>
     <p class="p_request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination</p>
     <div class="tooltip">
-        <button class="button_copy button_font" onclick="copy_to_clipboard('post_req_vaccination', 'tooltip4')" onmouseout="mouse_hover_out('tooltip4')">Copy
+        <button class="button_copy button_font" onclick="method_copy_text('post_req_vaccination', 'tooltip4')" onmouseout="method_mouse_hover_out('tooltip4')">Copy
         <span class="tooltiptext" id="tooltip4">Copy to clipboard</span>
         </button>
     </div>
@@ -59,5 +59,5 @@
     <a class="button button_font" href="{{ url_for('api_vaccination.vaccination', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
 </div>
 
-<script type="text/javascript" src="{{ url_for('static', filename='copy_clipboard.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/copy_clipboard.js') }}"></script>
 {% endblock %}
