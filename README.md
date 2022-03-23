@@ -22,7 +22,7 @@ $ python3 wsgi.py
 | :---------- | :----------------------------- | :---------------------------- |
 | index       | None                           | None                          |
 | epidemic    | cases, deaths, tests, hospital | start_date, end_date, \*state |
-| vaccination | None                           | start_date, end_date, state   |
+| vaccination | registration, progress         | start_date, end_date, state   |
 
 Available states:
 
@@ -60,7 +60,7 @@ https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_d
 Fetching vaccination category data example:
 
 ```sh
-https://api-covid19-malaysia.herokuapp.com/vaccination?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
+https://api-covid19-malaysia.herokuapp.com/vaccination/registration?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
 ```
 
 ### 6. Access data using JSON POST request
@@ -74,7 +74,11 @@ CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03",
 Fetching vaccination category data example:
 
 ```sh
-CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination
+CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination/progress
+```
+
+```sh
+CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination/progress
 ```
 
 ### 7. Heroku-App

@@ -14,7 +14,7 @@ def cases():
         helper.client_query_end_date = request.args.get("end_date", default=None, type=str)
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_cases_malaysia()
+            results = helper.get_cases_national()
         elif helper.client_query_state  != None:
             results = helper.get_cases_state()
         elif helper.client_query_state  != None and helper.client_query_state.lower() == "all":
@@ -35,7 +35,7 @@ def cases():
         helper.client_query_end_date = json_obj.get("end_date")
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_cases_malaysia() 
+            results = helper.get_cases_national() 
         elif helper.client_query_state != None:
             results = helper.get_cases_state()
         else:
@@ -46,7 +46,6 @@ def cases():
         else:
             return jsonify({"status": "failed", "data": results})
 
-
 @api_epidemic.route("/deaths", methods=["GET", "POST"])
 def deaths():
     if request.method == "GET":
@@ -56,7 +55,7 @@ def deaths():
         helper.client_query_end_date = request.args.get("end_date", default=None, type=str)
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_deaths_malaysia()
+            results = helper.get_deaths_national()
         elif helper.client_query_state != None:
             results = helper.get_deaths_state()
         else:
@@ -75,7 +74,7 @@ def deaths():
         helper.client_query_end_date = json_obj.get("end_date")
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_deaths_malaysia()
+            results = helper.get_deaths_national()
         elif helper.client_query_state != None:
             results = helper.get_deaths_state()
         else:
@@ -95,7 +94,7 @@ def tests():
         helper.client_query_end_date = request.args.get("end_date", default=None, type=str)
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_tests_malaysia()
+            results = helper.get_tests_national()
         elif helper.client_query_state != None:
             results = helper.get_tests_state()
         else:
@@ -114,7 +113,7 @@ def tests():
         helper.client_query_end_date = json_obj.get("end_date")
 
         if helper.client_query_state == None or helper.client_query_state == "":
-            results = helper.get_tests_malaysia()
+            results = helper.get_tests_national()
         elif helper.client_query_state != None:
             results = helper.get_tests_state()
         else:

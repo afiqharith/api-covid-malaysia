@@ -43,42 +43,42 @@ class DataHandlerEpidemic:
         else:
             raise Exception("Invalid value for state.")
 
-    def get_cases_malaysia(self) -> dict:
-        df_cases_malaysia = pd.read_csv(self.helper.cases_malaysia_url).fillna(0)
+    def get_cases_national(self) -> dict:
+        df_cases_national = pd.read_csv(self.helper.cases_national_url).fillna(0)
 
         response_results = list()
-        for row in range(len(df_cases_malaysia.index)):
+        for row in range(len(df_cases_national.index)):
 
-            if self.client_query_start_date == df_cases_malaysia.iloc[row, 0] and self.client_query_end_date == None:
+            if self.client_query_start_date == df_cases_national.iloc[row, 0] and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_cases_malaysia.columns)):
-                    if isinstance(df_cases_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_cases_malaysia.columns[column]}"] = int(df_cases_malaysia.iloc[row, column])
+                for column in range(len(df_cases_national.columns)):
+                    if isinstance(df_cases_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_cases_national.columns[column]}"] = int(df_cases_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_cases_malaysia.columns[column]}"] = str(df_cases_malaysia.iloc[row, column])
+                        sub_response[f"{df_cases_national.columns[column]}"] = str(df_cases_national.iloc[row, column])
                 response_results.append(sub_response)
                 break
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_cases_malaysia.columns)):
-                    if isinstance(df_cases_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_cases_malaysia.columns[column]}"] = int(df_cases_malaysia.iloc[row, column])
+                for column in range(len(df_cases_national.columns)):
+                    if isinstance(df_cases_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_cases_national.columns[column]}"] = int(df_cases_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_cases_malaysia.columns[column]}"] = str(df_cases_malaysia.iloc[row, column])
+                        sub_response[f"{df_cases_national.columns[column]}"] = str(df_cases_national.iloc[row, column])
                 response_results.append(sub_response)
 
             elif self.client_query_start_date != None and self.client_query_end_date != None:
                 client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
                 client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
 
-                if client_query_start_date_conversion <= datetime.datetime.strptime(df_cases_malaysia.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_cases_national.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
                     sub_response = dict()
-                    for column in range(len(df_cases_malaysia.columns)):
-                        if isinstance(df_cases_malaysia.iloc[row, column], (np.int64, np.float64)):
-                            sub_response[f"{df_cases_malaysia.columns[column]}"] = int(df_cases_malaysia.iloc[row, column])
+                    for column in range(len(df_cases_national.columns)):
+                        if isinstance(df_cases_national.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_cases_national.columns[column]}"] = int(df_cases_national.iloc[row, column])
                         else:
-                            sub_response[f"{df_cases_malaysia.columns[column]}"] = str(df_cases_malaysia.iloc[row, column])
+                            sub_response[f"{df_cases_national.columns[column]}"] = str(df_cases_national.iloc[row, column])
                     response_results.append(sub_response)
 
         if len(response_results) > 0:
@@ -170,42 +170,42 @@ class DataHandlerEpidemic:
         else:
             return None
 
-    def get_deaths_malaysia(self) -> dict:
-        df_deaths_malaysia = pd.read_csv(self.helper.deaths_malaysia_url).fillna(0)
+    def get_deaths_national(self) -> dict:
+        df_deaths_national = pd.read_csv(self.helper.deaths_national_url).fillna(0)
 
         response_results = list()
-        for row in range(len(df_deaths_malaysia.index)):
+        for row in range(len(df_deaths_national.index)):
 
-            if self.client_query_start_date == df_deaths_malaysia.iloc[row, 0] and self.client_query_end_date == None:
+            if self.client_query_start_date == df_deaths_national.iloc[row, 0] and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_deaths_malaysia.columns)):
-                    if isinstance(df_deaths_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_deaths_malaysia.columns[column]}"] = int(df_deaths_malaysia.iloc[row, column])
+                for column in range(len(df_deaths_national.columns)):
+                    if isinstance(df_deaths_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_deaths_national.columns[column]}"] = int(df_deaths_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_deaths_malaysia.columns[column]}"] = str(df_deaths_malaysia.iloc[row, column])
+                        sub_response[f"{df_deaths_national.columns[column]}"] = str(df_deaths_national.iloc[row, column])
                 response_results.append(sub_response)
                 break
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_deaths_malaysia.columns)):
-                    if isinstance(df_deaths_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_deaths_malaysia.columns[column]}"] = int(df_deaths_malaysia.iloc[row, column])
+                for column in range(len(df_deaths_national.columns)):
+                    if isinstance(df_deaths_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_deaths_national.columns[column]}"] = int(df_deaths_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_deaths_malaysia.columns[column]}"] = str(df_deaths_malaysia.iloc[row, column])
+                        sub_response[f"{df_deaths_national.columns[column]}"] = str(df_deaths_national.iloc[row, column])
                 response_results.append(sub_response)
 
             elif self.client_query_start_date != None and self.client_query_end_date != None:
                 client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
                 client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
 
-                if client_query_start_date_conversion <= datetime.datetime.strptime(df_deaths_malaysia.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_deaths_national.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
                     sub_response = dict()
-                    for column in range(len(df_deaths_malaysia.columns)):
-                        if isinstance(df_deaths_malaysia.iloc[row, column], (np.int64, np.float64)):
-                            sub_response[f"{df_deaths_malaysia.columns[column]}"] = int(df_deaths_malaysia.iloc[row, column])
+                    for column in range(len(df_deaths_national.columns)):
+                        if isinstance(df_deaths_national.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_deaths_national.columns[column]}"] = int(df_deaths_national.iloc[row, column])
                         else:
-                            sub_response[f"{df_deaths_malaysia.columns[column]}"] = str(df_deaths_malaysia.iloc[row, column])
+                            sub_response[f"{df_deaths_national.columns[column]}"] = str(df_deaths_national.iloc[row, column])
                     response_results.append(sub_response)
 
         if len(response_results) > 0:
@@ -256,42 +256,42 @@ class DataHandlerEpidemic:
         else:
             return None
 
-    def get_tests_malaysia(self) -> dict:
-        df_tests_malaysia = pd.read_csv(self.helper.tests_malaysia_url).fillna(0)
+    def get_tests_national(self) -> dict:
+        df_tests_national = pd.read_csv(self.helper.tests_national_url).fillna(0)
 
         response_results = list()
-        for row in range(len(df_tests_malaysia.index)):
+        for row in range(len(df_tests_national.index)):
 
-            if self.client_query_start_date == df_tests_malaysia.iloc[row, 0] and self.client_query_end_date == None:
+            if self.client_query_start_date == df_tests_national.iloc[row, 0] and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_tests_malaysia.columns)):
-                    if isinstance(df_tests_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_tests_malaysia.columns[column]}"] = int(df_tests_malaysia.iloc[row, column])
+                for column in range(len(df_tests_national.columns)):
+                    if isinstance(df_tests_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_tests_national.columns[column]}"] = int(df_tests_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_tests_malaysia.columns[column]}"] = str(df_tests_malaysia.iloc[row, column])
+                        sub_response[f"{df_tests_national.columns[column]}"] = str(df_tests_national.iloc[row, column])
                 response_results.append(sub_response)
                 break
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_tests_malaysia.columns)):
-                    if isinstance(df_tests_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_tests_malaysia.columns[column]}"] = int(df_tests_malaysia.iloc[row, column])
+                for column in range(len(df_tests_national.columns)):
+                    if isinstance(df_tests_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_tests_national.columns[column]}"] = int(df_tests_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_tests_malaysia.columns[column]}"] = str(df_tests_malaysia.iloc[row, column])
+                        sub_response[f"{df_tests_national.columns[column]}"] = str(df_tests_national.iloc[row, column])
                 response_results.append(sub_response)
 
             elif self.client_query_start_date != None and self.client_query_end_date != None:
                 client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
                 client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
 
-                if client_query_start_date_conversion <= datetime.datetime.strptime(df_tests_malaysia.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_tests_national.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
                     sub_response = dict()
-                    for column in range(len(df_tests_malaysia.columns)):
-                        if isinstance(df_tests_malaysia.iloc[row, column], (np.int64, np.float64)):
-                            sub_response[f"{df_tests_malaysia.columns[column]}"] = int(df_tests_malaysia.iloc[row, column])
+                    for column in range(len(df_tests_national.columns)):
+                        if isinstance(df_tests_national.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_tests_national.columns[column]}"] = int(df_tests_national.iloc[row, column])
                         else:
-                            sub_response[f"{df_tests_malaysia.columns[column]}"] = str(df_tests_malaysia.iloc[row, column])
+                            sub_response[f"{df_tests_national.columns[column]}"] = str(df_tests_national.iloc[row, column])
                     response_results.append(sub_response)
 
         if len(response_results) > 0:
@@ -426,42 +426,42 @@ class DataHandlerVaccination:
         else:
             raise Exception("Invalid value for state.")
         
-    def get_vaccine_malaysia(self) -> dict:
-        df_vaccine_malaysia = pd.read_csv(self.helper.vaccine_malaysia_url).fillna(0)
+    def get_vaccination_progress_national(self) -> dict:
+        df_vaccination_progress_national = pd.read_csv(self.helper.vaccination_progress_national_url).fillna(0)
 
         response_results = list()
-        for row in range(len(df_vaccine_malaysia .index)):
+        for row in range(len(df_vaccination_progress_national .index)):
 
-            if self.client_query_start_date == df_vaccine_malaysia.iloc[row, 0] and self.client_query_end_date == None:
+            if self.client_query_start_date == df_vaccination_progress_national.iloc[row, 0] and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_vaccine_malaysia.columns)):
-                    if isinstance(df_vaccine_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_vaccine_malaysia.columns[column]}"] = int(df_vaccine_malaysia.iloc[row, column])
+                for column in range(len(df_vaccination_progress_national.columns)):
+                    if isinstance(df_vaccination_progress_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_vaccination_progress_national.columns[column]}"] = int(df_vaccination_progress_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_vaccine_malaysia.columns[column]}"] = str(df_vaccine_malaysia.iloc[row, column])
+                        sub_response[f"{df_vaccination_progress_national.columns[column]}"] = str(df_vaccination_progress_national.iloc[row, column])
                 response_results.append(sub_response)
                 break
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
-                for column in range(len(df_vaccine_malaysia.columns)):
-                    if isinstance(df_vaccine_malaysia.iloc[row, column], (np.int64, np.float64)):
-                        sub_response[f"{df_vaccine_malaysia.columns[column]}"] = int(df_vaccine_malaysia.iloc[row, column])
+                for column in range(len(df_vaccination_progress_national.columns)):
+                    if isinstance(df_vaccination_progress_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_vaccination_progress_national.columns[column]}"] = int(df_vaccination_progress_national.iloc[row, column])
                     else:
-                        sub_response[f"{df_vaccine_malaysia.columns[column]}"] = str(df_vaccine_malaysia.iloc[row, column])
+                        sub_response[f"{df_vaccination_progress_national.columns[column]}"] = str(df_vaccination_progress_national.iloc[row, column])
                 response_results.append(sub_response)
 
             elif self.client_query_start_date != None and self.client_query_end_date != None:
                 client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
                 client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
 
-                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccine_malaysia.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccination_progress_national.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
                     sub_response = dict()
-                    for column in range(len(df_vaccine_malaysia.columns)):
-                        if isinstance(df_vaccine_malaysia.iloc[row, column], (np.int64, np.float64)):
-                            sub_response[f"{df_vaccine_malaysia.columns[column]}"] = int(df_vaccine_malaysia.iloc[row, column])
+                    for column in range(len(df_vaccination_progress_national.columns)):
+                        if isinstance(df_vaccination_progress_national.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_vaccination_progress_national.columns[column]}"] = int(df_vaccination_progress_national.iloc[row, column])
                         else:
-                            sub_response[f"{df_vaccine_malaysia.columns[column]}"] = str(df_vaccine_malaysia.iloc[row, column])
+                            sub_response[f"{df_vaccination_progress_national.columns[column]}"] = str(df_vaccination_progress_national.iloc[row, column])
                     response_results.append(sub_response)
 
         if len(response_results) > 0:
@@ -469,41 +469,126 @@ class DataHandlerVaccination:
         else:
             return None
 
-    def get_vaccine_state(self) -> dict:
-        df_vaccine_state = pd.read_csv(self.helper.vaccine_state_url).fillna(0)
+    def get_vaccination_progress_state(self) -> dict:
+        df_vaccination_progress_state = pd.read_csv(self.helper.vaccination_progress_state_url).fillna(0)
         
         response_results = list()
-        for row in range(len(df_vaccine_state.index)):
+        for row in range(len(df_vaccination_progress_state.index)):
 
-            if self.client_query_start_date == df_vaccine_state.iloc[row, 0] and self.client_query_end_date == None and self.client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+            if self.client_query_start_date == df_vaccination_progress_state.iloc[row, 0] and self.client_query_end_date == None and self.client_query_state.lower() == df_vaccination_progress_state.iloc[row, 1].lower():
                 sub_response = dict()
-                for column in range(len(df_vaccine_state.columns)):
-                    if df_vaccine_state.columns[column].isdigit():
-                        sub_response[f"{df_vaccine_state.columns[column]}"] = int(df_vaccine_state.iloc[row, column])
+                for column in range(len(df_vaccination_progress_state.columns)):
+                    if df_vaccination_progress_state.columns[column].isdigit():
+                        sub_response[f"{df_vaccination_progress_state.columns[column]}"] = int(df_vaccination_progress_state.iloc[row, column])
                     else:
-                        sub_response[f"{df_vaccine_state.columns[column]}"] = str(df_vaccine_state.iloc[row, column])
+                        sub_response[f"{df_vaccination_progress_state.columns[column]}"] = str(df_vaccination_progress_state.iloc[row, column])
                 response_results.append(sub_response)
                 break
 
-            elif self.client_query_start_date == None and self.client_query_end_date == None and self.client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+            elif self.client_query_start_date == None and self.client_query_end_date == None and self.client_query_state.lower() == df_vaccination_progress_state.iloc[row, 1].lower():
                 sub_response = dict()
-                for column in range(len(df_vaccine_state.columns)):
-                    if df_vaccine_state.columns[column].isdigit():
-                        sub_response[f"{df_vaccine_state.columns[column]}"] = int(df_vaccine_state.iloc[row, column])
+                for column in range(len(df_vaccination_progress_state.columns)):
+                    if df_vaccination_progress_state.columns[column].isdigit():
+                        sub_response[f"{df_vaccination_progress_state.columns[column]}"] = int(df_vaccination_progress_state.iloc[row, column])
                     else:
-                        sub_response[f"{df_vaccine_state.columns[column]}"] = str(df_vaccine_state.iloc[row, column])
+                        sub_response[f"{df_vaccination_progress_state.columns[column]}"] = str(df_vaccination_progress_state.iloc[row, column])
                 response_results.append(sub_response)
 
-            elif self.client_query_start_date != None and self.client_query_end_date != None and self.client_query_state.lower() == df_vaccine_state.iloc[row, 1].lower():
+            elif self.client_query_start_date != None and self.client_query_end_date != None and self.client_query_state.lower() == df_vaccination_progress_state.iloc[row, 1].lower():
                 client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
                 client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
-                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccine_state.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_vaccination_progress_state.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
                     sub_response = dict()
-                    for column in range(len(df_vaccine_state.columns)):
-                        if df_vaccine_state.columns[column].isdigit():
-                            sub_response[f"{df_vaccine_state.columns[column]}"] = int(df_vaccine_state.iloc[row, column])
+                    for column in range(len(df_vaccination_progress_state.columns)):
+                        if df_vaccination_progress_state.columns[column].isdigit():
+                            sub_response[f"{df_vaccination_progress_state.columns[column]}"] = int(df_vaccination_progress_state.iloc[row, column])
                         else:
-                            sub_response[f"{df_vaccine_state.columns[column]}"] = str(df_vaccine_state.iloc[row, column])
+                            sub_response[f"{df_vaccination_progress_state.columns[column]}"] = str(df_vaccination_progress_state.iloc[row, column])
+                    response_results.append(sub_response)
+
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
+    def get_vaccination_registration_national(self) -> dict:
+        get_vaccination_registration_national = pd.read_csv(self.helper.vaccination_registration_national_url).fillna(0)
+
+        response_results = list()
+        for row in range(len(get_vaccination_registration_national .index)):
+
+            if self.client_query_start_date == get_vaccination_registration_national.iloc[row, 0] and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(get_vaccination_registration_national.columns)):
+                    if isinstance(get_vaccination_registration_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{get_vaccination_registration_national.columns[column]}"] = int(get_vaccination_registration_national.iloc[row, column])
+                    else:
+                        sub_response[f"{get_vaccination_registration_national.columns[column]}"] = str(get_vaccination_registration_national.iloc[row, column])
+                response_results.append(sub_response)
+                break
+
+            elif self.client_query_start_date == None and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(get_vaccination_registration_national.columns)):
+                    if isinstance(get_vaccination_registration_national.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{get_vaccination_registration_national.columns[column]}"] = int(get_vaccination_registration_national.iloc[row, column])
+                    else:
+                        sub_response[f"{get_vaccination_registration_national.columns[column]}"] = str(get_vaccination_registration_national.iloc[row, column])
+                response_results.append(sub_response)
+
+            elif self.client_query_start_date != None and self.client_query_end_date != None:
+                client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
+
+                if client_query_start_date_conversion <= datetime.datetime.strptime(get_vaccination_registration_national.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    sub_response = dict()
+                    for column in range(len(get_vaccination_registration_national.columns)):
+                        if isinstance(get_vaccination_registration_national.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{get_vaccination_registration_national.columns[column]}"] = int(get_vaccination_registration_national.iloc[row, column])
+                        else:
+                            sub_response[f"{get_vaccination_registration_national.columns[column]}"] = str(get_vaccination_registration_national.iloc[row, column])
+                    response_results.append(sub_response)
+
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
+    def get_vaccination_registration_state(self) -> dict:
+        get_vaccination_registration_state = pd.read_csv(self.helper.vaccination_registration_state_url).fillna(0)
+        
+        response_results = list()
+        for row in range(len(get_vaccination_registration_state.index)):
+
+            if self.client_query_start_date == get_vaccination_registration_state.iloc[row, 0] and self.client_query_end_date == None and self.client_query_state.lower() == get_vaccination_registration_state.iloc[row, 1].lower():
+                sub_response = dict()
+                for column in range(len(get_vaccination_registration_state.columns)):
+                    if get_vaccination_registration_state.columns[column].isdigit():
+                        sub_response[f"{get_vaccination_registration_state.columns[column]}"] = int(get_vaccination_registration_state.iloc[row, column])
+                    else:
+                        sub_response[f"{get_vaccination_registration_state.columns[column]}"] = str(get_vaccination_registration_state.iloc[row, column])
+                response_results.append(sub_response)
+                break
+
+            elif self.client_query_start_date == None and self.client_query_end_date == None and self.client_query_state.lower() == get_vaccination_registration_state.iloc[row, 1].lower():
+                sub_response = dict()
+                for column in range(len(get_vaccination_registration_state.columns)):
+                    if get_vaccination_registration_state.columns[column].isdigit():
+                        sub_response[f"{get_vaccination_registration_state.columns[column]}"] = int(get_vaccination_registration_state.iloc[row, column])
+                    else:
+                        sub_response[f"{get_vaccination_registration_state.columns[column]}"] = str(get_vaccination_registration_state.iloc[row, column])
+                response_results.append(sub_response)
+
+            elif self.client_query_start_date != None and self.client_query_end_date != None and self.client_query_state.lower() == get_vaccination_registration_state.iloc[row, 1].lower():
+                client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
+                if client_query_start_date_conversion <= datetime.datetime.strptime(get_vaccination_registration_state.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    sub_response = dict()
+                    for column in range(len(get_vaccination_registration_state.columns)):
+                        if get_vaccination_registration_state.columns[column].isdigit():
+                            sub_response[f"{get_vaccination_registration_state.columns[column]}"] = int(get_vaccination_registration_state.iloc[row, column])
+                        else:
+                            sub_response[f"{get_vaccination_registration_state.columns[column]}"] = str(get_vaccination_registration_state.iloc[row, column])
                     response_results.append(sub_response)
 
         if len(response_results) > 0:

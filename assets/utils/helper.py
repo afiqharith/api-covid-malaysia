@@ -8,15 +8,22 @@ class Configuration:
         self.config = configparser.ConfigParser()
         self.config.read(self.config_path)
 
-        self.cases_malaysia_url = self.config["Cases"]["Malaysia"]
+        self.cases_national_url = self.config["Cases"]["National"]
         self.cases_state_url = self.config["Cases"]["State"]
-        self.deaths_malaysia_url = self.config["Deaths"]["Malaysia"]
+
+        self.deaths_national_url = self.config["Deaths"]["National"]
         self.deaths_state_url = self.config["Deaths"]["State"]
-        self.tests_malaysia_url = self.config["Tests"]["Malaysia"]
+
+        self.tests_national_url = self.config["Tests"]["National"]
         self.tests_state_url = self.config["Tests"]["State"]
+
         self.hospital_general_url = self.config["Hospital"]["General"]
-        self.vaccine_malaysia_url = self.config["Vaccination"]["Malaysia"]
-        self.vaccine_state_url = self.config["Vaccination"]["State"]
+
+        self.vaccination_progress_national_url = self.config["VaccinationProgress"]["National"]
+        self.vaccination_progress_state_url = self.config["VaccinationProgress"]["State"]
+
+        self.vaccination_registration_national_url = self.config["VaccinationRegistration"]["National"]
+        self.vaccination_registration_state_url = self.config["VaccinationRegistration"]["State"]
 
     @property
     def config_path(self) -> str:
@@ -56,11 +63,15 @@ class Documentation(Configuration):
     
     @property
     def vaccination_fields(self) -> List:
-        return self.all_available_fields[:-1]
+        return self.all_available_fields[4:6]
 
     @property
-    def vaccination_param(self) -> List:
-        return [field for field,_ in self.config.items("Vaccination")]
+    def vaccination_progress_param(self) -> List:
+        return [field for field,_ in self.config.items("VaccinationProgress")]
+
+    @property
+    def vaccination_registration_param(self) -> List:
+        return [field for field,_ in self.config.items("VaccinationRegistration")]
     
     @property
     def available_states(self) -> List:

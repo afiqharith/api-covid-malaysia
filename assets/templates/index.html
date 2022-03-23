@@ -38,7 +38,7 @@
 <div class="div_middle_lower">
     <h4 class="h4_header">Vaccination category</h4>
     <p class="p_title">GET Request</p>
-    <p class="p_request" id="get_req_vaccination">https://api-covid19-malaysia.herokuapp.com/vaccination?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
+    <p class="p_request" id="get_req_vaccination">https://api-covid19-malaysia.herokuapp.com/vaccination/progress?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
     <div class="tooltip">
         <button class="button_copy button_font" onclick="method_copy_text('get_req_vaccination', 'tooltip3')" onmouseout="method_mouse_hover_out('tooltip3')">Copy
         <span class="tooltiptext" id="tooltip3">Copy to clipboard</span>
@@ -46,7 +46,7 @@
     </div>
     
     <p class="p_title">POST Request</p>
-    <p class="p_request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination</p>
+    <p class="p_request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination/progress</p>
     <div class="tooltip">
         <button class="button_copy button_font" onclick="method_copy_text('post_req_vaccination', 'tooltip4')" onmouseout="method_mouse_hover_out('tooltip4')">Copy
         <span class="tooltiptext" id="tooltip4">Copy to clipboard</span>
@@ -56,7 +56,7 @@
 
 <div class="div_bottom">
     <a class="button button_font" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">Test Epidemic</a>
-    <a class="button button_font" href="{{ url_for('api_vaccination.vaccination', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
+    <a class="button button_font" href="{{ url_for('api_vaccination.progress', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">Test Vaccination</a>
 </div>
 
 <script type="text/javascript" src="{{ url_for('static', filename='scripts/copy_clipboard.js') }}"></script>

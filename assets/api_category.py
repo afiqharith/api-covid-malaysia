@@ -17,7 +17,8 @@ def category():
                 helper.epidemic_fields[3]: helper.hospital_param,
             },
             "vaccination": {
-                helper.vaccination_fields[0]: helper.vaccination_param
+                helper.vaccination_fields[0]: helper.vaccination_progress_param,
+                helper.vaccination_fields[1]: helper.vaccination_registration_param
             },
             "available_states": helper.available_states
         })
