@@ -1,4 +1,4 @@
-from .utils import DataHandlerEpidemic
+from ..utils import DataHandlerEpidemic
 from flask import Blueprint
 from flask import request
 from flask import jsonify

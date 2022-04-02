@@ -1,4 +1,4 @@
-from .utils import DataHandlerVaccination
+from ..utils import DataHandlerVaccination
 from flask import Blueprint
 from flask import request
 from flask import jsonify
