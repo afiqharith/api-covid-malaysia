@@ -8,4 +8,4 @@ views = Blueprint("views", __name__)
 @views.route("/", methods=["GET"])
 def index():
     if request.method == "GET":
-        return render_template("index.html", title = "Malaysia Covid-19 API")
+        return render_template("index.html", title = "Web API Covid-19 Malaysia")
