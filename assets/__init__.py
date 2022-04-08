@@ -5,7 +5,7 @@ class WebAPI:
         self.run_app = self.init()
 
     def init(self) -> Flask:
-        app = Flask(__name__)
+        app = Flask(__name__, static_url_path="/public", static_folder="public")
         app.config["SECRET_KEY"] = "MYAPI123"
 
         from .views import views
