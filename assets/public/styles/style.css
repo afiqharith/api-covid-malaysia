@@ -198,6 +198,7 @@ body {
 	margin-left: 0.7vw;
 	display: flex;
 	align-items: center;
+	margin-bottom: 1vh;
 }
 
 .content-link-request{
