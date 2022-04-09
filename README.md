@@ -1,6 +1,6 @@
 # WEB API COVID19 MALAYSIA
 
-<div align="center" style="border:solid; border-size: 0.4vmin">
+<div align="center" style="border:solid; border-size: 0.4vmin; border-color:black">
   <img src="assets/public/images/web.png">
 </div>
 
