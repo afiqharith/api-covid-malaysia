@@ -1,4 +1,8 @@
-# Web API Covid-19 Malaysia
+# WEB API COVID19 MALAYSIA
+
+<div align="center" style="border:solid; border-size: 0.4vmin">
+  <img src="assets/public/images/web.png">
+</div>
 
 ### 1. Install dependencies
 
