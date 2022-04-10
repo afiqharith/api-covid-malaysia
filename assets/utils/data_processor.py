@@ -130,10 +130,9 @@ class DataHandlerEpidemic:
 
     def get_cases_state_all(self) -> dict:
         df_cases_state_all = pd.read_csv(self.helper.cases_state_url).fillna(0)
-
         response_results = list()
-        for row in range(len(df_cases_state_all.index)):
 
+        for row in range(len(df_cases_state_all.index)):
             if self.client_query_start_date == df_cases_state_all.iloc[row, 0] and self.client_query_end_date == None:
                 sub_response = dict()
                 for column in range(len(df_cases_state_all.columns)):
@@ -142,7 +141,6 @@ class DataHandlerEpidemic:
                     else:
                         sub_response[f"{df_cases_state_all.columns[column]}"] = str(df_cases_state_all.iloc[row, column])
                 response_results.append(sub_response)
-                break
 
             elif self.client_query_start_date == None and self.client_query_end_date == None:
                 sub_response = dict()
@@ -555,6 +553,7 @@ class DataHandlerVaccination:
             return None
 
     def get_vaccination_registration_state(self) -> dict:
+        
         get_vaccination_registration_state = pd.read_csv(self.helper.vaccination_registration_state_url).fillna(0)
         
         response_results = list()
@@ -595,3 +594,7 @@ class DataHandlerVaccination:
             return response_results
         else:
             return None
+
+
+if __name__ =="__main__":
+    pass
