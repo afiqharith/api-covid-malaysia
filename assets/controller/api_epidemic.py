@@ -56,8 +56,10 @@ def deaths():
 
         if helper.client_query_state == None or helper.client_query_state == "":
             results = helper.get_deaths_national()
-        elif helper.client_query_state != None:
+        elif helper.client_query_state != None and helper.client_query_state.lower() != "all":
             results = helper.get_deaths_state()
+        elif helper.client_query_state.lower() == "all":
+            results = helper.get_deaths_state_all()
         else:
             return jsonify({"status": "failed", "message": "unsupported query"})
         

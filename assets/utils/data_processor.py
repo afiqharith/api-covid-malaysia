@@ -254,6 +254,48 @@ class DataHandlerEpidemic:
         else:
             return None
 
+    def get_deaths_state_all(self) -> dict:
+        df_deaths_state = pd.read_csv(self.helper.deaths_state_url).fillna(0)
+
+        response_results = list()
+        for row in range(len(df_deaths_state.index)):
+
+            if self.client_query_start_date == df_deaths_state.iloc[row, 0] and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(df_deaths_state.columns)):
+                    if isinstance(df_deaths_state.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_deaths_state.columns[column]}"] = int(df_deaths_state.iloc[row, column])
+                    else:
+                        sub_response[f"{df_deaths_state.columns[column]}"] = str(df_deaths_state.iloc[row, column])
+                response_results.append(sub_response)
+
+            elif self.client_query_start_date == None and self.client_query_end_date == None:
+                sub_response = dict()
+                for column in range(len(df_deaths_state.columns)):
+                    if isinstance(df_deaths_state.iloc[row, column], (np.int64, np.float64)):
+                        sub_response[f"{df_deaths_state.columns[column]}"] = int(df_deaths_state.iloc[row, column])
+                    else:
+                        sub_response[f"{df_deaths_state.columns[column]}"] = str(df_deaths_state.iloc[row, column])
+                response_results.append(sub_response)
+
+            elif self.client_query_start_date != None and self.client_query_end_date != None:
+                client_query_start_date_conversion = datetime.datetime.strptime(self.client_query_start_date, "%Y-%m-%d")
+                client_query_end_date_conversion = datetime.datetime.strptime(self.client_query_end_date, "%Y-%m-%d")
+
+                if client_query_start_date_conversion <= datetime.datetime.strptime(df_deaths_state.iloc[row, 0], "%Y-%m-%d") <= client_query_end_date_conversion:
+                    sub_response = dict()
+                    for column in range(len(df_deaths_state.columns)):
+                        if isinstance(df_deaths_state.iloc[row, column], (np.int64, np.float64)):
+                            sub_response[f"{df_deaths_state.columns[column]}"] = int(df_deaths_state.iloc[row, column])
+                        else:
+                            sub_response[f"{df_deaths_state.columns[column]}"] = str(df_deaths_state.iloc[row, column])
+                    response_results.append(sub_response)
+
+        if len(response_results) > 0:
+            return response_results
+        else:
+            return None
+
     def get_tests_national(self) -> dict:
         df_tests_national = pd.read_csv(self.helper.tests_national_url).fillna(0)
 
