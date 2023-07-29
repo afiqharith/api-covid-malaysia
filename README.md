@@ -83,4 +83,4 @@ CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03"
 
 ### 7. Render Web Service
 
-[![render](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-088F8F)](https://api-covidmalaysia.onrender.com/)
+[![render](https://img.shields.io/badge/API_Covid_MY-render-088F8F)](https://api-covidmalaysia.onrender.com/)
