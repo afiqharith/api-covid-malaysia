@@ -50,7 +50,7 @@ Available states:
 Check out:
 
 ```sh
-CURL-X POST -H "Content-Type: application/json" https://api-covid19-malaysia.herokuapp.com/category
+CURL-X POST -H "Content-Type: application/json" https://api-covidmalaysia.onrender.com/category
 ```
 
 ### 5. Access data using GET request
@@ -58,13 +58,13 @@ CURL-X POST -H "Content-Type: application/json" https://api-covid19-malaysia.her
 Fetching epidemic category data example:
 
 ```sh
-https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
+https://api-covidmalaysia.onrender.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05
 ```
 
 Fetching vaccination category data example:
 
 ```sh
-https://api-covid19-malaysia.herokuapp.com/vaccination/registration?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
+https://api-covidmalaysia.onrender.com/vaccination/registration?state=Selangor&start_date=2021-06-02&end_date=2021-07-05
 ```
 
 ### 6. Access data using JSON POST request
@@ -72,15 +72,15 @@ https://api-covid19-malaysia.herokuapp.com/vaccination/registration?state=Selang
 Fetching epidemic category data example:
 
 ```sh
-CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases
+CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}' https://api-covidmalaysia.onrender.com/epidemic/cases
 ```
 
 Fetching vaccination category data example:
 
 ```sh
-CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covid19-malaysia.herokuapp.com/vaccination/progress
+CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-02-03", "end_date": "2021-07-05", "state": "Selangor"}'  https://api-covidmalaysia.onrender.com/vaccination/progress
 ```
 
-### 7. Heroku-App
+### 7. Render Web Service
 
-[![HEROKU](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-purple)](https://api-covid19-malaysia.herokuapp.com/)
+[![render](https://img.shields.io/badge/Malaysia_Covid19_API-HEROKU-088F8F)](https://api-covidmalaysia.onrender.com/)
