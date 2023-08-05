@@ -1,99 +1,99 @@
 {% extends "template.html" %} {% block link %} {% endblock %} {% block content %}
 
 <div class="container">
-	<div class="container-top">
-		<div class="container-navbar">
-			<div class="panel-title">
-				<h1 class="header-title">WEB API COVID19 MALAYSIA</h1>
-			</div>
-			<div class="panel-logo">
-				<img class="icon-logo" src="{{ url_for('static',filename='images/index.ico') }}" alt="images" />
-			</div>
-		</div>
-		<div class="container-navbar-cosmetic"></div>
-	</div>
+    <div class="container-top">
+        <div class="container-navbar">
+            <div class="panel-title">
+                <h1 class="header-title">WEB API COVID19 MALAYSIA</h1>
+            </div>
+            <div class="panel-logo">
+                <img class="icon-logo" src="{{ url_for('static',filename='images/index.ico') }}" alt="images" />
+            </div>
+        </div>
+        <div class="container-navbar-cosmetic"></div>
+    </div>
 
-	<div class="container-middle">
-		<div class="container-middle-top">
-			<a href="https://github.com/MoH-Malaysia/covid19-public" target="_blank"><img src="https://img.shields.io/badge/Epidemic_Reference-MOH_Public_Data-orange" /></a>
-			<a href="https://github.com/CITF-Malaysia/citf-public" target="_blank"><img src="https://img.shields.io/badge/Vaccination_Reference-CITF_Malaysia_Public_Data-blue" /></a>
-			<a href="https://github.com/afiqharith/api-covid-malaysia" target="_blank"><img src="https://img.shields.io/badge/Github-Web_API_Covid19_Malaysia-black" /></a>
-			<a href="{{ url_for('api_category.category')}}" target="_blank"><img src="https://img.shields.io/badge/Available_parameter-Category-cyan" /></a>
-		</div>
+    <div class="container-middle">
+        <div class="container-middle-top">
+            <a href="https://github.com/MoH-Malaysia/covid19-public" target="_blank"><img src="https://img.shields.io/badge/Epidemic_Reference-MOH_Public_Data-orange" /></a>
+            <a href="https://github.com/CITF-Malaysia/citf-public" target="_blank"><img src="https://img.shields.io/badge/Vaccination_Reference-CITF_Malaysia_Public_Data-blue" /></a>
+            <a href="https://github.com/afiqharith/api-covid-malaysia" target="_blank"><img src="https://img.shields.io/badge/Github-Web_API_Covid19_Malaysia-black" /></a>
+            <a href="{{ url_for('api_category.category')}}" target="_blank"><img src="https://img.shields.io/badge/Available_parameter-Category-cyan" /></a>
+        </div>
 
-		<div class="container-middle-bottom">
-			<div class="panel-top">
-				<div class="panel-title">
-					<h4 class="header-panel-title">EPIDEMIC</h4>
-				</div>
-				<div class="panel-content">
-					<div class="content-title">
-						<p class="content-title-element">GET REQUEST</p>
-					</div>
-					<div class="content-request">
-						<p class="content-link-request" id="get_req_epidemic">https://api-covid19-malaysia.herokuapp.com/epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05</p>
-						<div class="tooltip">
-							<button class="button-copy" onclick="method_copy_text('get_req_epidemic', 'tooltip1')" onmouseout="method_mouse_hover_out('tooltip1')">
-								Copy
-								<span class="tooltiptext" id="tooltip1">Copy to clipboard</span>
-							</button>
-						</div>
-					</div>
-					<div class="content-title">
-						<p class="content-title-element">POST REQUEST</p>
-					</div>
-					<div class="content-request">
-						<p class="content-link-request" id="post_req_epidemic">CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-01-02", "end_date": "2021-01-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/epidemic/cases</p>
-						<div class="tooltip">
-							<button class="button-copy" onclick="method_copy_text('post_req_epidemic', 'tooltip2')" onmouseout="method_mouse_hover_out('tooltip2')">
-								Copy
-								<span class="tooltiptext" id="tooltip2">Copy to clipboard</span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+        <div class="container-middle-bottom">
+            <div class="panel-top">
+                <div class="panel-title">
+                    <h4 class="header-panel-title">EPIDEMIC</h4>
+                </div>
+                <div class="panel-content">
+                    <div class="content-title">
+                        <p class="content-title-element">GET REQUEST</p>
+                    </div>
+                    <div class="content-request">
+                        <p class="content-link-request" id="get_req_epidemic">https://api-covidmy.onrender.com//epidemic/cases?state=Selangor&start_date=2021-01-02&end_date=2021-01-05</p>
+                        <div class="tooltip">
+                            <button class="button-copy" onclick="method_copy_text('get_req_epidemic', 'tooltip1')" onmouseout="method_mouse_hover_out('tooltip1')">
+                                Copy
+                                <span class="tooltiptext" id="tooltip1">Copy to clipboard</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-title">
+                        <p class="content-title-element">POST REQUEST</p>
+                    </div>
+                    <div class="content-request">
+                        <p class="content-link-request" id="post_req_epidemic">CURL-X POST -H "Content-Type: application/json" -d '{"start_date": "2021-01-02", "end_date": "2021-01-05", "state": "Selangor"}' https://api-covidmy.onrender.com//epidemic/cases</p>
+                        <div class="tooltip">
+                            <button class="button-copy" onclick="method_copy_text('post_req_epidemic', 'tooltip2')" onmouseout="method_mouse_hover_out('tooltip2')">
+                                Copy
+                                <span class="tooltiptext" id="tooltip2">Copy to clipboard</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="panel-bottom">
-				<div class="panel-title">
-					<h4 class="header-panel-title">VACCINATION</h4>
-				</div>
-				<div class="panel-content">
-					<div class="content-title">
-						<p class="content-title-element">GET REQUEST</p>
-					</div>
-					<div class="content-request">
-						<p class="content-link-request" id="get_req_vaccination">https://api-covid19-malaysia.herokuapp.com/vaccination/progress?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
-						<div class="tooltip">
-							<button class="button-copy" onclick="method_copy_text('get_req_vaccination', 'tooltip3')" onmouseout="method_mouse_hover_out('tooltip3')">
-								Copy
-								<span class="tooltiptext" id="tooltip3">Copy to clipboard</span>
-							</button>
-						</div>
-					</div>
-					<div class="content-title">
-						<p class="content-title-element">POST REQUEST</p>
-					</div>
-					<div class="content-request">
-						<p class="content-link-request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}' https://api-covid19-malaysia.herokuapp.com/vaccination/progress</p>
-						<div class="tooltip">
-							<button class="button-copy" onclick="method_copy_text('post_req_vaccination', 'tooltip4')" onmouseout="method_mouse_hover_out('tooltip4')">
-								Copy
-								<span class="tooltiptext" id="tooltip4">Copy to clipboard</span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="panel-bottom">
+                <div class="panel-title">
+                    <h4 class="header-panel-title">VACCINATION</h4>
+                </div>
+                <div class="panel-content">
+                    <div class="content-title">
+                        <p class="content-title-element">GET REQUEST</p>
+                    </div>
+                    <div class="content-request">
+                        <p class="content-link-request" id="get_req_vaccination">https://api-covidmy.onrender.com//vaccination/progress?state=Selangor&start_date=2021-06-02&end_date=2021-07-05</p>
+                        <div class="tooltip">
+                            <button class="button-copy" onclick="method_copy_text('get_req_vaccination', 'tooltip3')" onmouseout="method_mouse_hover_out('tooltip3')">
+                                Copy
+                                <span class="tooltiptext" id="tooltip3">Copy to clipboard</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-title">
+                        <p class="content-title-element">POST REQUEST</p>
+                    </div>
+                    <div class="content-request">
+                        <p class="content-link-request" id="post_req_vaccination">CURL -X POST -H "Content-Type: application/json" -d '{"start_date": "2021-06-02", "end_date": "2021-07-05", "state": "Selangor"}' https://api-covidmy.onrender.com//vaccination/progress</p>
+                        <div class="tooltip">
+                            <button class="button-copy" onclick="method_copy_text('post_req_vaccination', 'tooltip4')" onmouseout="method_mouse_hover_out('tooltip4')">
+                                Copy
+                                <span class="tooltiptext" id="tooltip4">Copy to clipboard</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container-bottom">
-		<div class="panel-button-test">
-			<a class="button-test" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">TEST > EPIDEMIC</a>
-			<a class="button-test" href="{{ url_for('api_vaccination.progress', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">TEST > VACCINATION</a>
-		</div>
-	</div>
+    <div class="container-bottom">
+        <div class="panel-button-test">
+            <a class="button-test" href="{{ url_for('api_epidemic.cases', state='Selangor',start_date='2021-01-02',end_date='2021-01-05') }}" target="_blank">TEST > EPIDEMIC</a>
+            <a class="button-test" href="{{ url_for('api_vaccination.progress', state='Selangor',start_date='2021-06-02',end_date='2021-07-05') }}" target="_blank">TEST > VACCINATION</a>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript" src="{{ url_for('static', filename='scripts/copy_clipboard.js') }}"></script>
